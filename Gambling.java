@@ -106,7 +106,7 @@ class GamblingPlay {
 
 public class Gambling {
 	
-	public void playDays(int n,int monthNumber)
+	public int playDays(int n,int monthNumber)
 	{	
 		int totalAmount=0;
 		int amount=0;
@@ -117,6 +117,7 @@ public class Gambling {
 		int countWin=0;
 		//Initiliaze countWin as 0
 		int countLose=0;
+		int flag=0;
 		
 		//To count for each Day of the month
 		for(int i=0;i<n;i++)
@@ -161,6 +162,7 @@ public class Gambling {
 		//if totalresidualAmount is greater than 0 then it's a win  or a lose 
 		if(residualTotalAmount>0)
 		{
+			flag=1;
 			System.out.println("Won By "+residualTotalAmount);
 		}
 		else if(residualTotalAmount<0)
@@ -172,6 +174,7 @@ public class Gambling {
 			System.out.println("Neither Won Or Lost");
 		}
 		this.printLuckyorUnlucky(winList, loseList, monthNumber);
+		return flag;
 	
 	}
 	
@@ -195,21 +198,37 @@ public class Gambling {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		
+		Scanner sc=new Scanner(System.in);
 		//finding for each month
 		for(int i=0;i<12;i++)
 			
 		{	int monthNumber=i+1;
 			System.out.println("For the month "+monthNumber);
-			//Creating Object for Gambling Class
+			//Creating object for Gambling Class
 			Gambling objGambling=new Gambling();
 			
 			//Playing for each Day
-			objGambling.playDays(30,monthNumber);
+			int flag=objGambling.playDays(30,monthNumber);
+			//if flag is 1 then it's a win situation
+			if(flag==1)
+			{
+				System.out.println();
+				System.out.println("Want to play more If yes Press 1 or else 0");
+				int a=sc.nextInt();
+				if(a!=1)
+				{
+					break;
+				}
+				
+			}
 			System.out.println();
 			
+			
 		}
-	
+		
+		
+		
+
 	}
 
 }
