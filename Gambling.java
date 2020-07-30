@@ -21,7 +21,23 @@ public class Gambling {
 		this.bet=bet;
 	}
 	
-
+	public void gamblingPlay()
+	
+	{
+		Random rand=new Random();
+		//Creating random number within range 0-1
+		final int playCheck=rand.nextInt(2);
+		//if 1 then win case or lose case
+		if(playCheck==this.PLAYWIN)
+		{
+			this.gamblingAmount+=bet;
+		}
+		else
+		{
+			this.gamblingAmount-=bet;
+		}
+		
+	}
 	
 	
 
@@ -36,9 +52,11 @@ public class Gambling {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		//Creating Gambling Object
+		//Creating glambing object
 		Gambling gamblingObj=new Gambling();
+		//Calling the gamblingPlay function
+		gamblingObj.gamblingPlay();
+		//Printing the amount
 		System.out.println(gamblingObj.getGamblingAmount());
 		
 
