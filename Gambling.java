@@ -1,3 +1,4 @@
+
 import java.util.Random;
 public class Gambling {
 	
@@ -38,9 +39,23 @@ public class Gambling {
 		}
 		
 	}
+	public void letsPlayDay()
+	{  int stake=this.gamblingAmount;
+		while(true)
+		{   //if the Amount is above 50% of original or below 50% of original then signing out of game
+			if(this.getGamblingAmount()==0.5*stake|| this.getGamblingAmount()==1.5*stake)
+			{
+				break;
+			}
+			else
+			{
+				this.gamblingPlay();
+			}
+		}
+		
+			
+	}
 	
-	
-
 	/**
 	 * @return the gamblingAmount
 	 */
@@ -52,12 +67,12 @@ public class Gambling {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Creating glambing object
+		//Creating Gambling object
 		Gambling gamblingObj=new Gambling();
-		//Calling the gamblingPlay function
-		gamblingObj.gamblingPlay();
-		//Printing the amount
-		System.out.println(gamblingObj.getGamblingAmount());
+		//Start Playing
+		gamblingObj.letsPlayDay();
+		//Amount after Playing
+		System.out.println("Total Amount after Playing is "+gamblingObj.getGamblingAmount());
 		
 
 	}
