@@ -1,5 +1,5 @@
-
 import java.util.*;
+
 class GamblingPlay {
 	
 	private int gamblingAmount;
@@ -26,6 +26,12 @@ class GamblingPlay {
 		this.intGamblingAmount=this.gamblingAmount;
 	}
 	
+	/**
+	 * @return the intGamblingAmount
+	 */
+	public static int getIntGamblingAmount() {
+		return intGamblingAmount;
+	}
 	public void gamblingPlay()
 	
 	{
@@ -59,12 +65,6 @@ class GamblingPlay {
 		
 			
 	}
-	/**
-	 * @return the intGamblingAmount
-	 */
-	public static int getIntGamblingAmount() {
-		return intGamblingAmount;
-	}
 	
 	/**
 	 * @return the gamblingAmount
@@ -73,27 +73,47 @@ class GamblingPlay {
 		return gamblingAmount;
 	}
 }
+
 public class Gambling {
 	
 	public void playDays(int n)
 	{	
-		//Initialise totalAmount to 0
 		int totalAmount=0;
+		int amount=0;
+		int countWin=0;
+		int countLose=0;
 		
-		
-		//To count for each Day
+		//To count for each Day of the month
 		for(int i=0;i<n;i++)
 		{	
 			
 			//creating object for each day
-			GamblingPlay gamblingObj = new GamblingPlay();
+			GamblingPlay gamblingObj=new GamblingPlay();
 			//calculating amount for each day
 			gamblingObj.letsPlayDay();
 			
-			totalAmount += gamblingObj.getGamblingAmount();
-		
+			amount=gamblingObj.getGamblingAmount();
+			totalAmount + = amount;
+			//finding residual amount
+			int residualAmount = amount - GamblingPlay.getIntGamblingAmount() ;
+			
+			//if residualAmount is greater than 0 then it's a win game or a lose game
+			if(residualAmount > 0)
+			{
+				countWin++;
+			}
+			
+			else	
+			{	
+				countLose++;
+			}
 		}
-		int residualTotalAmount=totalAmount - GamblingPlay.getIntGamblingAmount() * n;
+		
+		
+		System.out.println("The Number Of Winning Days Are"+countWin);
+		System.out.println("The Number Of Losing Days Are "+countLose);
+		//finding totalResidualAmount
+		int residualTotalAmount = totalAmount - n * GamblingPlay.getIntGamblingAmount();
 		//if totalresidualAmount is greater than 0 then it's a win  or a lose 
 		if(residualTotalAmount>0)
 		{
@@ -108,22 +128,28 @@ public class Gambling {
 			System.out.println("Neither Won Or Lost");
 		}
 	
-		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Creating object for Gambling class
-		Gambling objGambling=new Gambling();
-		//Playing for 20 days
-		objGambling.playDays(20);
 		
 		
+		//finding for each month
+		for(int i=0;i<12;i++)
+			
+		{	
+			int monthNumber=i+1;
+			System.out.println("For the month "+monthNumber);
+			//Creating Gambling Object
+			Gambling objGambling=new Gambling();
+			
+			//Playing for each Day
+			objGambling.playDays(30);
+			System.out.println();
+			
+		}
+	
 
 	}
 
 }
-	
-
-
-
