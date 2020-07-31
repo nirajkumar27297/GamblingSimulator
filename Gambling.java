@@ -33,7 +33,6 @@ class GamblingPlay {
 		return intGamblingAmount;
 	}
 	public void gamblingPlay()
-	
 	{
 		Random rand = new Random();
 		//Creating random number within range 0-1
